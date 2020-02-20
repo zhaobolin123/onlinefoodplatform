@@ -8,5 +8,5 @@ package com.mapper;
  * @return ：
  */
 public interface UserMapper {
-    Integer testuser ();
+    Integer testuser();
 }

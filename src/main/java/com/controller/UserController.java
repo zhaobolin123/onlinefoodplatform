@@ -19,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "test",method = RequestMethod.GET)
-    public Integer testUser() throws Exception{
-        return userService.testUser();
+    public String testUser() throws Exception{
+        return "jsp/index";
     }
 }
