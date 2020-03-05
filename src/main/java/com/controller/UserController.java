@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Map;
+
 /**
  * @Author: 赵博林
  * @Date:2020/2/20 19:11
@@ -22,5 +24,11 @@ public class UserController {
     public String testUser() throws Exception{
         userService.testUser();
         return "jsp/index";
+    }
+
+    @RequestMapping(value = "regist",method = RequestMethod.POST)
+    public Map<String,Object> regist(String params) throws Exception{
+        Map<String,Object> map = userService.registUser(params);
+        return map;
     }
 }
