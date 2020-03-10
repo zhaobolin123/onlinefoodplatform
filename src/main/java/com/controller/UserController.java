@@ -38,8 +38,8 @@ public class UserController {
     //登录
     @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> login(String user_phone) throws Exception{
-        Map<String,Object> map = userService.login(user_phone);
+    public Map<String,Object> login(User user) throws Exception{
+        Map<String,Object> map = userService.login(user);
         return map;
     }
 }

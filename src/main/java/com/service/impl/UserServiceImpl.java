@@ -63,16 +63,23 @@ public class UserServiceImpl implements UserService {
 
     //登录
     @Override
-    public Map<String, Object> login(String user_phone) throws Exception {
+    public Map<String, Object> login(User user) throws Exception {
         Map<String,Object> map = new HashMap<>();
 
-        if (StringUtils.isEmpty(user_phone) || Objects.equals("",user_phone)) {
-                return ResUtil.error(map,"001","传入参数不能为空!");
+        if (StringUtils.isEmpty(user.getUser_phone()) || Objects.equals("",user.getUser_phone())) {
+            if (StringUtils.isEmpty(user.getUser_password()) || Objects.equals("",user.getUser_password())) {
+                    return ResUtil.error(map,"001","传入参数不能为空!");
+            }
         }
         else{
             try {
-                    User user = userMapper.login(user_phone);
-                    map.put("user",user);
+                    if(null== userMapper.login(user)){
+                        return ResUtil.error(map,"003","账号或密码错误！");
+                    }
+                    else{
+                        User usermap = userMapper.login(user);
+                        map.put("user",usermap);
+                    }
             } catch (Exception e) {
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }

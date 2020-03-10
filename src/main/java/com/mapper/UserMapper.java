@@ -19,5 +19,5 @@ public interface UserMapper {
     int isRegist(String user_phone);
 
     //登录
-    User login(String user_phone);
+    User login(User user);
 }

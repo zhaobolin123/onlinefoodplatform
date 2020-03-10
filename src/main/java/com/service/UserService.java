@@ -18,5 +18,5 @@ public interface UserService {
     Map<String,Object> registUser(User user) throws Exception;
 
     //登录
-    Map<String, Object> login(String user_phone) throws  Exception;
+    Map<String, Object> login(User user) throws  Exception;
 }

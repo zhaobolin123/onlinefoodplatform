@@ -12,7 +12,7 @@
         select count(1) from user where user_phone = #{user_phone};
     </select>
 
-    <select id="login" parameterType="java.lang.String" resultType="com.po.User">
-      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_phone = #{user_phone};
+    <select id="login" parameterType="com.po.User" resultType="com.po.User">
+      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_phone = #{user_phone} and user_password=#{user_password};
     </select>
 </mapper>
