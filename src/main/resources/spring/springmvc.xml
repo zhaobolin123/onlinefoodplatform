@@ -27,12 +27,12 @@
 	</bean>
 	
 	<!-- 声明静态资源 -->
-	<mvc:resources mapping="/js/**" location="/WEB-INF/dist/js/" />
+	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
 	<mvc:resources mapping="/css/**" location="/WEB-INF/dist/css/" />
 	<mvc:resources mapping="/img/**" location="/WEB-INF/dist/img/" />
 	
 	<!-- 资源映射 -->
 	<mvc:resources location="/WEB-INF/dist/css" mapping="/css/**"/>
-	<mvc:resources location="/WEB-INF/dist/js" mapping="/js/**"/>
+	<mvc:resources location="/WEB-INF/js" mapping="/js/**"/>
 	<mvc:resources location="/WEB-INF/dist/img" mapping="/img/**"/>
 </beans>

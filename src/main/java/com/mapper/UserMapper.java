@@ -13,5 +13,11 @@ public interface UserMapper {
     Integer testuser();
 
     //注册账号
-    int regisgtUser(User user);
+    void registUser(User user);
+
+    //判断是否注册
+    int isRegist(String user_phone);
+
+    //登录
+    User login(String user_phone);
 }

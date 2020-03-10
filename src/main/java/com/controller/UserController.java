@@ -1,10 +1,12 @@
 package com.controller;
 
+import com.po.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -25,10 +27,19 @@ public class UserController {
         userService.testUser();
         return "jsp/index";
     }
-
+    //注册
     @RequestMapping(value = "regist",method = RequestMethod.POST)
-    public Map<String,Object> regist(String params) throws Exception{
-        Map<String,Object> map = userService.registUser(params);
+    @ResponseBody
+    public Map<String,Object> regist(User user) throws Exception{
+        Map<String,Object> map = userService.registUser(user);
+        return map;
+    }
+
+    //登录
+    @RequestMapping(value = "login",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> login(String user_phone) throws Exception{
+        Map<String,Object> map = userService.login(user_phone);
         return map;
     }
 }

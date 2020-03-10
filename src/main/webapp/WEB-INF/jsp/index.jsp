@@ -11,6 +11,23 @@
     <title>Title</title>
 </head>
 <body>
-ssssssss
+<button onclick="test()">发送</button>
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script>
+function test() {
+    var data={"user_phone":"132465",
+        "user_password":"123456798"};
+    $.ajax({
+        type:'post',
+        url:"http://localhost:8080/regist",
+        data:data,
+        //contentType:"application/json;charset=utf-8",
+        success:function(msg){
+            alert(msg)
+        }
+    });
+}
+
+</script>
 </html>
