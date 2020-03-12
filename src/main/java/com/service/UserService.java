@@ -19,4 +19,12 @@ public interface UserService {
 
     //登录
     Map<String, Object> login(User user) throws  Exception;
+
+    //修改个人信息
+    Map<String, Object> updateUser(User user) throws  Exception;
+
+    //修改密码
+    Map<String, Object> updatepassword(User user) throws  Exception;
+
+
 }

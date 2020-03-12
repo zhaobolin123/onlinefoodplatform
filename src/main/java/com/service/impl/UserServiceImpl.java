@@ -7,6 +7,7 @@ import com.service.UserService;
 import com.util.ResUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.text.DateFormat;
@@ -80,6 +81,47 @@ public class UserServiceImpl implements UserService {
                         User usermap = userMapper.login(user);
                         map.put("user",usermap);
                     }
+            } catch (Exception e) {
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
+
+    //修改个人信息
+    @Override
+    @Transactional
+    public Map<String, Object> updateUser(User user) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+
+        if (StringUtils.isEmpty(user.getUser_id()) || Objects.equals("",user.getUser_id())) {
+                return ResUtil.error(map,"001","传入id不能为空!");
+        }
+        else{
+            try {
+                    userMapper.updateUser(user);
+                    User user2 = userMapper.selectuserbyid(user.getUser_id());
+                    map.put("user",user2);
+            } catch (Exception e) {
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
+
+    //修改密码
+    @Override
+    public Map<String, Object> updatepassword(User user) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+
+        if (StringUtils.isEmpty(user.getUser_id()) || Objects.equals("",user.getUser_id())) {
+            if (StringUtils.isEmpty(user.getUser_password()) || Objects.equals("", user.getUser_password())) {
+                return ResUtil.error(map, "001", "传入参数不能为空!");
+            }
+        }
+        else{
+            try {
+                userMapper.updatepassword(user);
             } catch (Exception e) {
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }

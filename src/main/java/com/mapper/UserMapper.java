@@ -20,4 +20,13 @@ public interface UserMapper {
 
     //登录
     User login(User user);
+
+    //修改个人信息
+    void updateUser(User user);
+
+    //根据id查询User
+    User selectuserbyid(Integer user_id);
+
+    //修改密码
+    void updatepassword(User user);
 }

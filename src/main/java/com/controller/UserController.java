@@ -42,4 +42,20 @@ public class UserController {
         Map<String,Object> map = userService.login(user);
         return map;
     }
+
+    //修改个人信息
+    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updateUser(User user) throws Exception{
+        Map<String,Object> map = userService.updateUser(user);
+        return map;
+    }
+
+    //修改密码
+    @RequestMapping(value = "updatepassword",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updatepassword(User user) throws Exception{
+        Map<String,Object> map = userService.updatepassword(user);
+        return map;
+    }
 }

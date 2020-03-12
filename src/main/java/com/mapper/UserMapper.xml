@@ -15,4 +15,16 @@
     <select id="login" parameterType="com.po.User" resultType="com.po.User">
       SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_phone = #{user_phone} and user_password=#{user_password};
     </select>
+
+    <update id="updateUser" parameterType="com.po.User">
+        UPDATE user set user_nickname=#{user_nickname},user_sex=#{user_sex},user_pic=#{user_pic} where user_id = #{user_id};
+    </update>
+
+    <select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">
+      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user是 where user_id = #{user_id};
+    </select>
+
+    <update id="updatepassword" parameterType="com.po.User">
+        update user set user_password = #{user_password} where user_id= #{user_id};
+    </update>
 </mapper>
