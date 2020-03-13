@@ -25,6 +25,7 @@ public class UserController {
     @RequestMapping(value = "test",method = RequestMethod.GET)
     public String testUser() throws Exception{
         userService.testUser();
+        System.out.println("我是测试代码");
         return "jsp/index";
     }
     //注册
