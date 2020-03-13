@@ -17,7 +17,6 @@ import java.io.IOException;
  * @Param：
  * @return ：
  */
-@Component
 public class CrossFilter implements Filter {
     private static Logger logger = LoggerFactory.getLogger(CrossFilter.class);
 
