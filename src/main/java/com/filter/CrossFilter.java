@@ -3,6 +3,7 @@ package com.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @Param：
  * @return ：
  */
+@Component
 public class CrossFilter implements Filter {
     private static Logger logger = LoggerFactory.getLogger(CrossFilter.class);
 

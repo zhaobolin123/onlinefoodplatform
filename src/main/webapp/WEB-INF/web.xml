@@ -57,6 +57,6 @@
   <filter-mapping>
     <filter-name>cors</filter-name>
     <!-- 这里配置你需要进行跨域的接口，*代表controller当前路径下所子有路径 -->
-    <url-pattern>/onlinefoodplatform/*</url-pattern>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>
