@@ -27,19 +27,12 @@ public class CrossFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        logger.debug("跨域请求进来了。。。");
-        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        httpServletRequest.getSession();
-        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-        httpResponse.setHeader("Access-Control-Allow-Origin", "*");
-        httpResponse.setHeader("Access-Control-Allow-Methods", "*");
-        httpResponse.setHeader("Access-Control-Max-Age", "3600");
-        httpResponse.setHeader("Access-Control-Allow-Headers",
-                "Origin, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie");
-        httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-        httpResponse.setHeader("Content-type", "application/json");
-        httpResponse.setHeader("Cache-Control", "no-cache, must-revalidate");
-        filterChain.doFilter(servletRequest, httpResponse);
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
