@@ -24,6 +24,8 @@ public class User {
 
     private Date user_time;
 
+    private Date user_mail;
+
     public Integer getUser_id() {
         return user_id;
     }
@@ -78,5 +80,13 @@ public class User {
 
     public void setUser_time(Date user_time) {
         this.user_time = user_time;
+    }
+
+    public Date getUser_mail() {
+        return user_mail;
+    }
+
+    public void setUser_mail(Date user_mail) {
+        this.user_mail = user_mail;
     }
 }

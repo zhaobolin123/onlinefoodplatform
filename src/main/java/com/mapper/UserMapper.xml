@@ -5,7 +5,7 @@
         update user set user_phone='123456' where user_id='1'
     </update>
     <insert id="registUser" parameterType="com.po.User">
-        insert into user(user_phone,user_password,user_time) VALUES (#{user_phone},#{user_password},#{user_time});
+        insert into user(user_phone,user_password,user_time,user_mail) VALUES (#{user_phone},#{user_password},#{user_time},#{user_mail});
     </insert>
 
     <select id="isRegist" parameterType="java.lang.String" resultType="java.lang.Integer">

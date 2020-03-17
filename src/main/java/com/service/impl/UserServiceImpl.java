@@ -41,8 +41,10 @@ public class UserServiceImpl implements UserService {
 
         if (StringUtils.isEmpty(user.getUser_phone()) || Objects.equals("", user.getUser_phone())) {
             if (StringUtils.isEmpty(user.getUser_password()) || Objects.equals("", user.getUser_password())) {
-            return ResUtil.error(map,"001","传入参数不能为空!");
-        }
+                if (StringUtils.isEmpty(user.getUser_mail()) || Objects.equals("", user.getUser_mail())) {
+                    return ResUtil.error(map,"001","传入参数不能为空!");
+                }
+            }
         }
         else{
             try {
@@ -116,9 +118,9 @@ public class UserServiceImpl implements UserService {
 
         if (StringUtils.isEmpty(user.getUser_id()) || Objects.equals("",user.getUser_id())) {
             if (StringUtils.isEmpty(user.getUser_password()) || Objects.equals("", user.getUser_password())) {
-                return ResUtil.error(map, "001", "传入参数不能为空!");
+                    return ResUtil.error(map, "001", "传入参数不能为空!");
+                }
             }
-        }
         else{
             try {
                 userMapper.updatepassword(user);

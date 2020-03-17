@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BusinessMapper">
+    <insert id="addbusiness" parameterType="com.po.Business">
+        INSERT INTO `business`(business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time)
+        VALUES
+         (#{business_phone},#{business_password},#{contact_number},#{business_nickname},#{business_pic},0,#{business_time});
+    </insert>
+
+    <select id="isRegist" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from business where  business_phone= #{business_phone};
+    </select>
+
+    <select id="businesslogin" parameterType="com.po.Business" resultType="com.po.Business">
+      SELECT business_id,business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time
+      from business where  business_phone= #{business_phone} and business_password=#{business_password};
+    </select>
+    <!--<select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">-->
+      <!--SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user是 where user_id = #{user_id};-->
+    <!--</select>-->
+
+    <!--<update id="updatepassword" parameterType="com.po.User">-->
+        <!--update user set user_password = #{user_password} where user_id= #{user_id};-->
+    <!--</update>-->
+</mapper>

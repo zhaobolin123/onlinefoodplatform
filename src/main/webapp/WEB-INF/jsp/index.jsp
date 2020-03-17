@@ -22,6 +22,7 @@ function test() {
         type:'post',
         url:"http://localhost:8080/regist",
         data:data,
+        contentType: 'application/x-www-form-urlencoded',
         //contentType:"application/json;charset=utf-8",
         success:function(msg){
             alert(msg)
