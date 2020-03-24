@@ -31,4 +31,19 @@ public class OrderController {
         return map;
     }
 
+    //查询订单根据状态
+    @RequestMapping(value = "selectOrderByState",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> selectOrderByState(Order order) throws Exception{
+        Map<String,Object> map = orderService.selectOrderByState(order);
+        return map;
+    }
+
+    //修改订单状态
+    @RequestMapping(value = "updatestate",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updatestate(Order order) throws Exception{
+        Map<String,Object> map = orderService.updatestate(order);
+        return map;
+    }
 }

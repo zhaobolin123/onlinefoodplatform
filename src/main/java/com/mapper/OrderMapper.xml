@@ -4,15 +4,18 @@
     <insert id="addOrder" parameterType="com.po.Order">
         INSERT INTO `order`(user_id,dishes_id,state,number,remark,tableware_number,consignee_phone,consignee_address)
         VALUES
-         (#{user_id},#{dishes_id},#{state},#{number},#{remark},#{tableware_number},#{consignee_phone},#{consignee_address});
+         (#{user_id},#{dishes_id},0,#{number},#{remark},#{tableware_number},#{consignee_phone},#{consignee_address});
     </insert>
 
 
-    <!--<select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">-->
-      <!--SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user是 where user_id = #{user_id};-->
-    <!--</select>-->
+    <select id="selectOrderByState" parameterType="com.po.Order" resultType="com.po.Order">
+      select order_id,user_id,dishes_id,state,number,remark,tableware_number,consignee_phone,consignee_address
+      from `order`
+      where state = #{state}
+      and user_id = #{user_id};
+    </select>
 
-    <!--<update id="updatepassword" parameterType="com.po.User">-->
-        <!--update user set user_password = #{user_password} where user_id= #{user_id};-->
-    <!--</update>-->
+    <update id="updatestate" parameterType="com.po.Order">
+        UPDATE `order` SET state = #{state} WHERE order_id = #{order_id};
+    </update>
 </mapper>

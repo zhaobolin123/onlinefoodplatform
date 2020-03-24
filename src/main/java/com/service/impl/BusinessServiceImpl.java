@@ -36,9 +36,10 @@ public class BusinessServiceImpl implements BusinessService {
         Map<String,Object> map = new HashMap<>();
 
         if (StringUtils.isEmpty(business.getBusiness_phone()) || Objects.equals("", business.getBusiness_phone())) {
-            if (StringUtils.isEmpty(business.getBusiness_password()) || Objects.equals("", business.getBusiness_password())) {
                 return ResUtil.error(map,"001","传入参数不能为空!");
-            }
+        }
+        else if (StringUtils.isEmpty(business.getBusiness_password()) || Objects.equals("", business.getBusiness_password())) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
         }
         else{
             try {
@@ -63,9 +64,10 @@ public class BusinessServiceImpl implements BusinessService {
         Map<String,Object> map = new HashMap<>();
 
         if (StringUtils.isEmpty(business.getBusiness_phone()) || Objects.equals("",business.getBusiness_phone())) {
-            if (StringUtils.isEmpty(business.getBusiness_password()) || Objects.equals("",business.getBusiness_password())) {
                 return ResUtil.error(map,"001","传入参数不能为空!");
-            }
+        }
+        else if (StringUtils.isEmpty(business.getBusiness_password()) || Objects.equals("",business.getBusiness_password())) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
         }
         else{
             try {
