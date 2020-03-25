@@ -21,7 +21,7 @@
     </update>
 
     <select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">
-      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user是 where user_id = #{user_id};
+      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_id = #{user_id};
     </select>
 
     <update id="updatepassword" parameterType="com.po.User">
