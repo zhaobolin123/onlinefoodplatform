@@ -35,6 +35,9 @@ public class ShopServiceImpl implements ShopService {
         if (StringUtils.isEmpty(shop.getShop_name()) || Objects.equals("", shop.getShop_name())) {
             return ResUtil.error(map,"001","传入参数不能为空!");
         }
+        else if (StringUtils.isEmpty(shop.getBusiness_id()) || Objects.equals("", shop.getBusiness_id())) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
+        }
         else{
             try {
                     dinstance = df.format(num);
