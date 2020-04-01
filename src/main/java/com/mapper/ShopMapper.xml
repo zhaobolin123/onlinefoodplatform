@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShopMapper">
+    <insert id="addShop" parameterType="com.po.Shop">
+        insert into shop (shop_name,business_id,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_state,distance) VALUES
+        (#{shop_name},#{business_id},#{shop_address},#{shop_pic},null,0,0,0,#{distance});
+    </insert>
+
+    <select id="selectshopforbusiness" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      SELECT count(*) from shop where business_id = #{business_id}
+    </select>
+    <select id="selectShopByState" parameterType="com.po.Shop" resultType="com.po.Shop">
+      select order_id,user_id,dishes_id,state,number,remark,tableware_number,consignee_phone,consignee_address
+      from `order`
+      where state = #{state}
+      and user_id = #{user_id};
+    </select>
+
+    <update id="updatestate" parameterType="com.po.Shop">
+        UPDATE `order` SET state = #{state} WHERE order_id = #{order_id};
+    </update>
+</mapper>

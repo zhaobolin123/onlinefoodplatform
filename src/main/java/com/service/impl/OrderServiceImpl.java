@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
             try {
                 orderMapper.addOrder(order);
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -61,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
             try {
                 orderMapper.updatestate(order);
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -85,7 +85,7 @@ public class OrderServiceImpl implements OrderService {
                 orderlist = orderMapper.selectOrderByState(order);
                 map.put("order",orderlist);
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
