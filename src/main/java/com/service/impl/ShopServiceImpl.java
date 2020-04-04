@@ -61,7 +61,7 @@ public class ShopServiceImpl implements ShopService {
         }
         else{
             try {
-                int isShop = shopMapper.selectshopforbusiness(business_id);
+                Shop isShop = shopMapper.selectshopforbusiness(business_id);
                 map.put("isShop",isShop);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -70,29 +70,62 @@ public class ShopServiceImpl implements ShopService {
         }
         return ResUtil.error(map,"000",ResUtil.SUCCESS);
     }
-//    //修改订单状态
-//    @Override
-//    public Map<String, Object> updatestate(Order order) throws Exception {
-//        Map<String,Object> map = new HashMap<>();
-//
-//        if (StringUtils.isEmpty(order.getOrder_id()) || Objects.equals("", order.getOrder_id())) {
-//                return ResUtil.error(map,"001","传入参数不能为空!");
-//        }
-//        else
-//        if (StringUtils.isEmpty(order.getState()) || Objects.equals("", order.getState())) {
-//            return ResUtil.error(map,"001","传入参数不能为空!");
-//        }
-//        else{
-//            try {
-//                orderMapper.updatestate(order);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                return ResUtil.error(map,"005","异常,请联系管理员！");
-//            }
-//        }
-//        return ResUtil.error(map,"000",ResUtil.SUCCESS);
-//    }
-//
+
+    //根据状态查询店铺列表
+    @Override
+    public Map<String, Object> selectshopbystate(Integer shop_state) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        List<Shop> shoplist = new ArrayList<Shop>();
+        if (StringUtils.isEmpty(shop_state) || Objects.equals("", shop_state)) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
+        }
+        else{
+            try {
+                shoplist = shopMapper.selectshopbystate(shop_state);
+                map.put("shoplist",shoplist);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
+
+    //模糊随机返回店铺
+    @Override
+    public Map<String, Object> selectshoprandom(String shop_name) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        List<Shop> shoplist = new ArrayList<Shop>();
+        try {
+            shoplist = shopMapper.selectshoprandom(shop_name);
+            map.put("shoplist",shoplist);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResUtil.error(map,"005","异常,请联系管理员！");
+        }
+
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
+
+    //修改店铺信息
+    @Override
+    public Map<String, Object> updateshopinfo(Shop shop) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+
+        if (StringUtils.isEmpty(shop.getShop_id()) || Objects.equals("", shop.getShop_id())) {
+                return ResUtil.error(map,"001","传入参数不能为空!");
+        }
+        else{
+            try {
+                shopMapper.updateshopinfo(shop);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
+
 //    //查询订单根据状态
 //    @Override
 //    public Map<String, Object> selectOrderByState(Order order) throws Exception {

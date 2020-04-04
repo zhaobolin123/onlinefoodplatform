@@ -18,11 +18,14 @@ public interface ShopMapper {
     void addShop(Shop shop);
 
     //查询是否拥有店铺
-    Integer selectshopforbusiness(Integer business);
+    Shop selectshopforbusiness(Integer business);
 
-    //根据状态查询订单
-    List<Order> selectOrderByState(Order order);
+    //根据状态查询店铺列表
+    List<Shop> selectshopbystate(Integer shop_state);
 
-    //修改订单状态
-    void updatestate(Order order);
+    //模糊随机返回店铺
+    List<Shop> selectshoprandom(String shop_name);
+
+    //修改店铺信息
+    void updateshopinfo(Shop shop);
 }

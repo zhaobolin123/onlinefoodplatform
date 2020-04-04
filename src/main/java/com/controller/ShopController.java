@@ -38,19 +38,28 @@ public class ShopController {
         Map<String,Object> map = shopService.selectshopforbusiness(business_id);
         return map;
     }
-//    //查询订单根据状态
-//    @RequestMapping(value = "selectOrderByState",method = RequestMethod.POST)
-//    @ResponseBody
-//    public Map<String,Object> selectOrderByState(Order order) throws Exception{
-//        Map<String,Object> map = orderService.selectOrderByState(order);
-//        return map;
-//}
-//
-//    //修改订单状态
-//    @RequestMapping(value = "updatestate",method = RequestMethod.POST)
-//    @ResponseBody
-//    public Map<String,Object> updatestate(Order order) throws Exception{
-//        Map<String,Object> map = orderService.updatestate(order);
-//        return map;
-//    }
+
+    //根据状态查询店铺列表
+    @RequestMapping(value = "selectshopbystate",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> selectshopbystate(Integer shop_state) throws Exception{
+        Map<String,Object> map = shopService.selectshopbystate(shop_state);
+        return map;
+    }
+
+    //模糊随机返回店铺
+    @RequestMapping(value = "selectshoprandom",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> selectshoprandom(String shop_name) throws Exception{
+        Map<String,Object> map = shopService.selectshoprandom(shop_name);
+        return map;
+    }
+
+    //修改店铺信息
+    @RequestMapping(value = "updateshopinfo",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updateshopinfo(Shop shop) throws Exception{
+        Map<String,Object> map = shopService.updateshopinfo(shop);
+        return map;
+    }
 }
