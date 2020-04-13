@@ -97,6 +97,9 @@ public class ShopServiceImpl implements ShopService {
         Map<String,Object> map = new HashMap<>();
         List<Shop> shoplist = new ArrayList<Shop>();
         try {
+            if(shop_name==null){
+                shop_name = "";
+            }
             shoplist = shopMapper.selectshoprandom(shop_name);
             map.put("shoplist",shoplist);
         } catch (Exception e) {

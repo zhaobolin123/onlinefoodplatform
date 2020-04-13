@@ -17,11 +17,26 @@
     </select>
 
     <update id="updateUser" parameterType="com.po.User">
-        UPDATE user set user_nickname=#{user_nickname},user_sex=#{user_sex},user_pic=#{user_pic} where user_id = #{user_id};
+        UPDATE user
+        <set>
+            <if test="user_nickname != null">
+              user_nickname=#{user_nickname},
+            </if>
+            <if test="user_sex != null">
+                user_sex=#{user_sex},
+            </if>
+            <if test="user_pic != null">
+                user_pic=#{user_pic},
+            </if>
+            <if test="user_mail != null">
+                user_mail=#{user_mail}
+            </if>
+        </set>
+        where user_id = #{user_id};
     </update>
 
     <select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">
-      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_id = #{user_id};
+      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time,user_mail from user where user_id = #{user_id};
     </select>
 
     <update id="updatepassword" parameterType="com.po.User">

@@ -43,7 +43,7 @@
                 shop_dishes = #{shop_dishes},
             </if>
             <if test="shop_state != null">
-                shop_state = #{shop_state}
+                shop_state = #{shop_state},
             </if>
             <if test="distance != null">
                 distance = #{distance}
