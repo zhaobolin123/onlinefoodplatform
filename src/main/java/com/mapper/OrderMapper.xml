@@ -11,11 +11,21 @@
     <select id="selectOrderByState" parameterType="com.po.Order" resultType="com.po.Order">
       select order_id,user_id,dishes_id,state,number,remark,tableware_number,consignee_phone,consignee_address
       from `order`
-      where state = #{state}
-      and user_id = #{user_id};
+      where
+        user_id = #{user_id}
+       <if test="state!=null and state!=''">
+        and state = #{state}
+       </if>
     </select>
 
     <update id="updatestate" parameterType="com.po.Order">
         UPDATE `order` SET state = #{state} WHERE order_id = #{order_id};
     </update>
+
+    <!--根据order_id查询订单列表-->
+    <select id="selectOrderById" parameterType="java.lang.Integer" resultType="com.po.Order">
+    select order_id,user_id,dishes_id,state,number,remark,tableware_number,consignee_phone,consignee_address
+    from `order`
+    where order_id = #{order_id}
+</select>
 </mapper>

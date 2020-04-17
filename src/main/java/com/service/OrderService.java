@@ -21,5 +21,6 @@ public interface OrderService {
     //查询订单根据状态
     Map<String, Object> selectOrderByState(Order order) throws  Exception;
 
-
+    //根据order_id查询订单列表
+    Map<String, Object>  selectOrderById(Integer order_id) throws  Exception;
 }

@@ -62,4 +62,12 @@ public class ShopController {
         Map<String,Object> map = shopService.updateshopinfo(shop);
         return map;
     }
+
+    //根据店铺id查询店铺
+    @RequestMapping(value = "selectshopbyid",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> selectshopbyid(Integer shop_id) throws Exception{
+        Map<String,Object> map = shopService.selectshopbyid(shop_id);
+        return map;
+    }
 }

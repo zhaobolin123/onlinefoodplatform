@@ -28,5 +28,6 @@ public interface ShopService {
     //查询是否拥有店铺
     Map<String, Object> selectshopforbusiness(Integer business_id) throws  Exception;
 
-
+    //根据店铺id查询店铺
+    Map<String, Object> selectshopbyid(Integer shop_id) throws  Exception;
 }

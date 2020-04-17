@@ -46,4 +46,12 @@ public class OrderController {
         Map<String,Object> map = orderService.updatestate(order);
         return map;
     }
+
+    //根据order_id查询订单列表
+    @RequestMapping(value = "selectOrderById",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> selectOrderById(Integer order_id) throws Exception{
+        Map<String,Object> map = orderService.selectOrderById(order_id);
+        return map;
+    }
 }

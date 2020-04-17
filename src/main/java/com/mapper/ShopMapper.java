@@ -20,6 +20,9 @@ public interface ShopMapper {
     //查询是否拥有店铺
     Shop selectshopforbusiness(Integer business);
 
+    //根据店铺id查询店铺
+    Shop selectshopbyid(Integer shop_id);
+
     //根据状态查询店铺列表
     List<Shop> selectshopbystate(Integer shop_state);
 

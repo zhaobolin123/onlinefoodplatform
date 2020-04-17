@@ -21,4 +21,7 @@ public interface OrderMapper {
 
     //修改订单状态
     void updatestate(Order order);
+
+    //根据order_id查询订单列表
+    Order selectOrderById(Integer order_id);
 }

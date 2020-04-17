@@ -1,7 +1,13 @@
 package com.service.impl;
 
+import com.mapper.DishesMapper;
 import com.mapper.OrderMapper;
+import com.mapper.ShopMapper;
+import com.mapper.UserMapper;
+import com.po.Dishes;
 import com.po.Order;
+import com.po.Shop;
+import com.po.User;
 import com.service.OrderService;
 import com.util.ResUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +28,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private DishesMapper dishesMapper;
+    @Autowired
+    private ShopMapper shopMapper;
 
     //添加订单
     @Override
@@ -77,9 +89,6 @@ public class OrderServiceImpl implements OrderService {
         if (StringUtils.isEmpty(order.getUser_id()) || Objects.equals("", order.getUser_id())) {
                 return ResUtil.error(map,"001","传入参数不能为空!");
         }
-        else if (StringUtils.isEmpty(order.getState()) || Objects.equals("", order.getState())) {
-            return ResUtil.error(map,"001","传入参数不能为空!");
-        }
         else{
             try {
                 orderlist = orderMapper.selectOrderByState(order);
@@ -92,4 +101,33 @@ public class OrderServiceImpl implements OrderService {
         return ResUtil.error(map,"000",ResUtil.SUCCESS);
     }
 
+    //根据order_id查询订单列表
+    @Override
+    public Map<String, Object> selectOrderById(Integer order_id) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        Order order;
+        User user;
+        Dishes dishes;
+        Shop shop;
+
+        if (StringUtils.isEmpty(order_id) || Objects.equals("", order_id)) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
+        }
+        else{
+            try {
+                order = orderMapper.selectOrderById(order_id);
+                map.put("order",order);
+                user = userMapper.selectuserbyid(order.getUser_id());
+                map.put("user",user);
+                dishes = dishesMapper.selectDishesById(order.getDishes_id());
+                map.put("dishes",dishes);
+                shop = shopMapper.selectshopbyid(dishes.getShop_id());
+                map.put("shop",shop);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
 }
