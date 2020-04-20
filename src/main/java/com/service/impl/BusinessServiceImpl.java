@@ -53,6 +53,7 @@ public class BusinessServiceImpl implements BusinessService {
 
                 businessMapper.addbusiness(business);
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -79,10 +80,28 @@ public class BusinessServiceImpl implements BusinessService {
                     map.put("business",businessmap);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
         return ResUtil.error(map,"000",ResUtil.SUCCESS);
     }
 
+    @Override
+    public Map<String, Object> updatebusinessinfo(Business business) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+
+        if (StringUtils.isEmpty(business.getBusiness_id()) || Objects.equals("",business.getBusiness_id())) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
+        }
+        else{
+            try {
+                businessMapper.updatebusinessinfo(business);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
 }

@@ -36,4 +36,12 @@ public class BusinessController {
         Map<String,Object> map = businessService.businesslogin(business);
         return map;
     }
+
+    //修改商家信息
+    @RequestMapping(value = "updatebusinessinfo",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> updatebusinessinfo(Business business) throws Exception{
+        Map<String,Object> map = businessService.updatebusinessinfo(business);
+        return map;
+    }
 }

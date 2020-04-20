@@ -11,8 +11,8 @@ public class Dishes {
     private Integer dishes_id;
     private Integer shop_id;
     private String dishname;
-    private String sales_volume;
-    private String score;
+    private Integer sales_volume;
+    private Double score;
     private String dishes_pic;
     private Double dishes_price;
     private String material;
@@ -41,19 +41,19 @@ public class Dishes {
         this.dishname = dishname;
     }
 
-    public String getSales_volume() {
+    public Integer getSales_volume() {
         return sales_volume;
     }
 
-    public void setSales_volume(String sales_volume) {
+    public void setSales_volume(Integer sales_volume) {
         this.sales_volume = sales_volume;
     }
 
-    public String getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

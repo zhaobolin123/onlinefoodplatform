@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ReceivingMapper">
+    <insert id="addReceiving" parameterType="com.po.Receiving">
+        insert into receiving (user_id,receiving_name,receiving_phone,receiving_address) VALUES
+        (#{user_id},#{receiving_name},#{receiving_phone},#{receiving_address});
+    </insert>
+
+    <select id="selectReceivingByUserId" parameterType="java.lang.Integer" resultType="com.po.Receiving">
+      SELECT receiving_id,user_id,receiving_name,receiving_phone,receiving_address from receiving where user_id = #{user_id}
+    </select>
+
+    <select id="selectreceivingbyid" parameterType="java.lang.Integer" resultType="com.po.Receiving">
+      SELECT receiving_id,user_id,receiving_name,receiving_phone,receiving_address from receiving where receiving_id = #{receiving_id}
+    </select>
+
+    <update id="updatereceivinginfo" parameterType="com.po.Receiving">
+       UPDATE `receiving` SET receiving_name = #{receiving_name},receiving_phone = #{receiving_phone},receiving_address = #{receiving_address} WHERE receiving_id = #{receiving_id};
+    </update>
+
+    <delete id="delectreceiving" parameterType="java.lang.Integer">
+        DELETE FROM receiving WHERE receiving_id = #{receiving_id}
+    </delete>
+</mapper>

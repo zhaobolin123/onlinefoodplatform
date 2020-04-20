@@ -1,6 +1,8 @@
 package com.service.impl;
 
+import com.mapper.BusinessMapper;
 import com.mapper.ShopMapper;
+import com.po.Business;
 import com.po.Shop;
 import com.service.ShopService;
 import com.util.ResUtil;
@@ -24,6 +26,9 @@ public class ShopServiceImpl implements ShopService {
     @Autowired
     private ShopMapper shopMapper;
 
+    @Autowired
+    private BusinessMapper businessMapper;
+
     //添加店铺
     @Override
     public Map<String, Object> addShop(Shop shop) throws Exception {
@@ -31,6 +36,10 @@ public class ShopServiceImpl implements ShopService {
         double num = Math.random()*10;
         String dinstance;
         DecimalFormat df = new DecimalFormat( "0.000" );
+
+        Business business = new Business();
+        business.setBusiness_id(shop.getBusiness_id());
+        business.setIsshop(1);
 
         if (StringUtils.isEmpty(shop.getShop_name()) || Objects.equals("", shop.getShop_name())) {
             return ResUtil.error(map,"001","传入参数不能为空!");
@@ -43,6 +52,7 @@ public class ShopServiceImpl implements ShopService {
                     dinstance = df.format(num);
                     shop.setDistance(dinstance);
                     shopMapper.addShop(shop);
+                    businessMapper.updatebusinessinfo(business);
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");

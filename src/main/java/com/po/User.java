@@ -26,6 +26,16 @@ public class User {
 
     private String user_mail;
 
+    private String collection;
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
+    }
+
     public Integer getUser_id() {
         return user_id;
     }

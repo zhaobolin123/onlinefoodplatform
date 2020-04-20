@@ -17,8 +17,9 @@ public interface BusinessService {
 
     //商家登录
     Map<String, Object> businesslogin(Business business) throws  Exception;
-//    //修改个人信息
-//    Map<String, Object> updateUser(User user) throws  Exception;
+
+    //修改商家信息
+    Map<String, Object> updatebusinessinfo(Business business) throws  Exception;
 
 
 

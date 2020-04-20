@@ -29,4 +29,7 @@ public interface UserMapper {
 
     //修改密码
     void updatepassword(User user);
+
+    //删除用户
+    void delectuser(Integer user_id);
 }

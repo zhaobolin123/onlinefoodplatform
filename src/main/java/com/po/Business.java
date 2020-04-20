@@ -26,6 +26,8 @@ public class Business {
 
     private Date business_time;
 
+    private Integer state;
+
     public Integer getBusiness_id() {
         return business_id;
     }
@@ -88,5 +90,13 @@ public class Business {
 
     public void setBusiness_time(Date business_time) {
         this.business_time = business_time;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

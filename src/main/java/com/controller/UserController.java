@@ -59,4 +59,12 @@ public class UserController {
         Map<String,Object> map = userService.updatepassword(user);
         return map;
     }
+
+    //删除用户
+    @RequestMapping(value = "delectuser",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> delectuser(Integer user_id) throws Exception{
+        Map<String,Object> map = userService.delectuser(user_id);
+        return map;
+    }
 }

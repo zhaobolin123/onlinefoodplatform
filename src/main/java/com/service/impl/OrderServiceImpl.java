@@ -49,6 +49,12 @@ public class OrderServiceImpl implements OrderService {
         else{
             try {
                 orderMapper.addOrder(order);
+                Dishes dishes = dishesMapper.selectDishesById(order.getDishes_id());
+                dishes.setSales_volume(dishes.getSales_volume()+order.getNumber());
+                dishesMapper.updatedishesinfo(dishes);
+                Shop shop = shopMapper.selectshopbyid(dishes.getShop_id());
+                shop.setShop_sales(shop.getShop_sales()+order.getNumber());
+                shopMapper.updateshopinfo(shop);
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");

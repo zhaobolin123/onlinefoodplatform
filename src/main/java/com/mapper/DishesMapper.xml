@@ -6,4 +6,41 @@
       SELECT dishes_id,shop_id,dishname,sales_volume,score,dishes_pic,dishes_price,material from dishes where dishes_id = #{dishes_id}
     </select>
 
+    <select id="selectDishesList" parameterType="java.lang.Integer" resultType="com.po.Dishes">
+      SELECT dishes_id,shop_id,dishname,sales_volume,score,dishes_pic,dishes_price,material from dishes where shop_id = #{shop_id}
+    </select>
+
+    <insert id="addDishes" parameterType="com.po.Dishes">
+        insert into dishes (shop_id,dishname,sales_volume,score,dishes_pic,dishes_price,material) VALUES
+        (#{shop_id},#{dishname},0,0,#{dishes_pic},#{dishes_price},#{material});
+    </insert>
+
+    <update id="updatedishesinfo" parameterType="com.po.Dishes">
+        UPDATE `dishes`
+        <set>
+            <if test="dishname != null">
+                dishname = #{dishname},
+            </if>
+            <if test="sales_volume != null">
+                sales_volume = #{sales_volume},
+            </if>
+            <if test="score != null">
+                score= #{score},
+            </if>
+            <if test="dishes_pic != null">
+                dishes_pic = #{dishes_pic},
+            </if>
+            <if test="dishes_price != null">
+                dishes_price = #{dishes_price},
+            </if>
+            <if test="material != null">
+                material = #{material},
+            </if>
+        </set>
+        WHERE dishes_id = #{dishes_id};
+    </update>
+
+    <delete id="delectdishes" parameterType="java.lang.Integer">
+        DELETE FROM dishes WHERE dishes_id = #{dishes_id}
+    </delete>
 </mapper>

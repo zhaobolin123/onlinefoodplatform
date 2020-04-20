@@ -14,8 +14,8 @@ public class Shop {
     private String shop_address;
     private String shop_pic;
     private String shop_notice;
-    private String shop_score;
-    private String shop_sales;
+    private Double shop_score;
+    private Integer shop_sales;
     private Integer shop_dishes;
     private Integer shop_state;
     private String distance;
@@ -60,19 +60,19 @@ public class Shop {
         this.shop_notice = shop_notice;
     }
 
-    public String getShop_score() {
+    public Double getShop_score() {
         return shop_score;
     }
 
-    public void setShop_score(String shop_score) {
+    public void setShop_score(Double shop_score) {
         this.shop_score = shop_score;
     }
 
-    public String getShop_sales() {
+    public Integer getShop_sales() {
         return shop_sales;
     }
 
-    public void setShop_sales(String shop_sales) {
+    public void setShop_sales(Integer shop_sales) {
         this.shop_sales = shop_sales;
     }
 

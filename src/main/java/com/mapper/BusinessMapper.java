@@ -19,9 +19,8 @@ public interface BusinessMapper {
 
     //商家登录
     Business businesslogin(Business business);
-//    //根据id查询User
-//    User selectuserbyid(Integer user_id);
-//
-//    //修改密码
-//    void updatepassword(User user);
+
+    //修改商家信息
+    void updatebusinessinfo(Business business);
+
 }

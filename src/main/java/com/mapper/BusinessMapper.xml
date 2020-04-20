@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.BusinessMapper">
     <insert id="addbusiness" parameterType="com.po.Business">
-        INSERT INTO `business`(business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time)
+        INSERT INTO `business`(business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time,state)
         VALUES
-         (#{business_phone},#{business_password},#{contact_number},#{business_nickname},#{business_pic},0,#{business_time});
+         (#{business_phone},#{business_password},#{contact_number},#{business_nickname},#{business_pic},0,#{business_time},0);
     </insert>
 
     <select id="isRegist" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -15,11 +15,29 @@
       SELECT business_id,business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time
       from business where  business_phone= #{business_phone} and business_password=#{business_password};
     </select>
-    <!--<select id="selectuserbyid" parameterType="java.lang.Integer" resultType="com.po.User">-->
-      <!--SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user是 where user_id = #{user_id};-->
-    <!--</select>-->
 
-    <!--<update id="updatepassword" parameterType="com.po.User">-->
-        <!--update user set user_password = #{user_password} where user_id= #{user_id};-->
-    <!--</update>-->
+    <update id="updatebusinessinfo" parameterType="com.po.Business">
+        UPDATE `business`
+        <set>
+            <if test="business_password != null">
+                business_password = #{business_password},
+            </if>
+            <if test="contact_number != null">
+                contact_number = #{contact_number},
+            </if>
+            <if test="business_nickname != null">
+                business_nickname= #{business_nickname},
+            </if>
+            <if test="business_pic != null">
+                business_pic = #{business_pic},
+            </if>
+            <if test="isshop != null">
+                isshop = #{isshop},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+        </set>
+        WHERE business_id = #{business_id};
+    </update>
 </mapper>

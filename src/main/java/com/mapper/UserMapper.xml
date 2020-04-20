@@ -31,6 +31,9 @@
             <if test="user_mail != null">
                 user_mail=#{user_mail}
             </if>
+            <if test="collection != null">
+                collection=#{collection}
+            </if>
         </set>
         where user_id = #{user_id};
     </update>
@@ -42,4 +45,8 @@
     <update id="updatepassword" parameterType="com.po.User">
         update user set user_password = #{user_password} where user_id= #{user_id};
     </update>
+
+    <delete id="delectuser" parameterType="java.lang.Integer">
+        DELETE FROM user WHERE user_id = #{user_id}
+    </delete>
 </mapper>

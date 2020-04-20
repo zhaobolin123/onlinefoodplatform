@@ -26,5 +26,6 @@ public interface UserService {
     //修改密码
     Map<String, Object> updatepassword(User user) throws  Exception;
 
-
+    //删除用户
+    Map<String, Object> delectuser(Integer user_id) throws  Exception;
 }

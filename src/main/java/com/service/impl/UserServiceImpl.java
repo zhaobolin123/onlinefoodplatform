@@ -134,4 +134,24 @@ public class UserServiceImpl implements UserService {
         }
         return ResUtil.error(map,"000",ResUtil.SUCCESS);
     }
+
+
+    //删除用户
+    @Override
+    public Map<String, Object> delectuser(Integer user_id) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+
+        if (StringUtils.isEmpty(user_id) || Objects.equals("", user_id)) {
+            return ResUtil.error(map,"001","传入参数不能为空!");
+        }
+        else{
+            try {
+                userMapper.delectuser(user_id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResUtil.error(map,"005","异常,请联系管理员！");
+            }
+        }
+        return ResUtil.error(map,"000",ResUtil.SUCCESS);
+    }
 }
