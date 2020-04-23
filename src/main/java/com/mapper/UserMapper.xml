@@ -29,7 +29,7 @@
                 user_pic=#{user_pic},
             </if>
             <if test="user_mail != null">
-                user_mail=#{user_mail}
+                user_mail=#{user_mail},
             </if>
             <if test="collection != null">
                 collection=#{collection}
