@@ -13,7 +13,7 @@
     </select>
 
     <select id="login" parameterType="com.po.User" resultType="com.po.User">
-      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time from user where user_phone = #{user_phone} and user_password=#{user_password};
+      SELECT user_id,user_nickname,user_phone,user_sex,user_pic,user_time,user_mail from user where user_phone = #{user_phone} and user_password=#{user_password};
     </select>
 
     <update id="updateUser" parameterType="com.po.User">
