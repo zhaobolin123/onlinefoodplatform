@@ -1,17 +1,14 @@
 package com.service.impl;
 
 import com.mapper.DishesMapper;
-import com.po.Business;
+import com.mapper.ShopMapper;
 import com.po.Dishes;
-import com.po.Order;
 import com.po.Shop;
 import com.service.DishesService;
 import com.util.ResUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -26,6 +23,8 @@ public class DishesServiceImpl implements DishesService {
 
     @Autowired
     private DishesMapper dishesMapper;
+    @Autowired
+    private ShopMapper shopMapper;
 
     //根据菜品id查询菜品
     @Override
@@ -53,6 +52,7 @@ public class DishesServiceImpl implements DishesService {
     public Map<String, Object> selectDishesList(Integer shop_id) throws Exception {
         Map<String,Object> map = new HashMap<>();
         List<Dishes> disheslist;
+        Shop shop;
 
         if (StringUtils.isEmpty(shop_id) || Objects.equals("", shop_id)) {
             return ResUtil.error(map,"001","传入参数不能为空!");
@@ -60,7 +60,9 @@ public class DishesServiceImpl implements DishesService {
         else{
             try {
                 disheslist = dishesMapper.selectDishesList(shop_id);
+                shop = shopMapper.selectshopbyid(shop_id);
                 map.put("disheslist",disheslist);
+                map.put("shop",shop);
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");

@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 
                 userMapper.registUser(user);
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -87,6 +88,7 @@ public class UserServiceImpl implements UserService {
                         map.put("user",usermap);
                     }
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -108,6 +110,7 @@ public class UserServiceImpl implements UserService {
                     User user2 = userMapper.selectuserbyid(user.getUser_id());
                     map.put("user",user2);
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
@@ -129,6 +132,7 @@ public class UserServiceImpl implements UserService {
             try {
                 userMapper.updatepassword(user);
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");
             }
         }
