@@ -7,19 +7,19 @@
     </insert>
 
     <select id="selectshopforbusiness" parameterType="java.lang.Integer" resultType="com.po.Shop">
-      SELECT shop_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where business_id = #{business_id}
+      SELECT shop_id,business_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where business_id = #{business_id}
     </select>
 
     <select id="selectshopbystate" parameterType="java.lang.Integer" resultType="com.po.Shop">
-      SELECT shop_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_state = #{shop_state}
+      SELECT shop_id,business_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_state = #{shop_state}
     </select>
 
     <select id="selectshopbyid" parameterType="java.lang.Integer" resultType="com.po.Shop">
-      SELECT shop_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_id = #{shop_id}
+      SELECT shop_id,business_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_id = #{shop_id}
     </select>
 
     <select id="selectshoprandom" resultType="com.po.Shop">
-      SELECT shop_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_name like "%"#{shop_name}"%" order by rand() limit 15
+      SELECT shop_id,business_id,shop_name,shop_address,shop_pic,shop_notice,shop_score,shop_sales,shop_dishes,shop_state,distance from shop where shop_name like "%"#{shop_name}"%" order by rand() limit 15
     </select>
 
     <update id="updateshopinfo" parameterType="com.po.Shop">
