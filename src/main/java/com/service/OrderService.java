@@ -1,5 +1,6 @@
 package com.service;
 
+import com.dto.OrderDTO;
 import com.po.Order;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ import java.util.Map;
 */
 public interface OrderService {
     //添加订单
-    Map<String,Object> addOrder(Order order) throws Exception;
+    Map<String,Object> addOrder(OrderDTO orderDTO) throws Exception;
 
     //修改订单状态
     Map<String, Object> updatestate(Order order) throws  Exception;

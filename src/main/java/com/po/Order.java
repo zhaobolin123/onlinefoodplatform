@@ -10,9 +10,8 @@ package com.po;
 public class Order {
     private Integer order_id;
     private Integer user_id;
-    private Integer dishes_id;
+    private Integer shop_id;
     private Integer state;
-    private Integer number;
     private String remark;
     private Integer tableware_number;
     private String consignee_phone;
@@ -34,13 +33,6 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public Integer getDishes_id() {
-        return dishes_id;
-    }
-
-    public void setDishes_id(Integer dishes_id) {
-        this.dishes_id = dishes_id;
-    }
 
     public Integer getState() {
         return state;
@@ -50,13 +42,14 @@ public class Order {
         this.state = state;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getShop_id() {
+        return shop_id;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setShop_id(Integer shop_id) {
+        this.shop_id = shop_id;
     }
+
 
     public String getRemark() {
         return remark;

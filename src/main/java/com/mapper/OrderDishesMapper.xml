@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderDishesMapper">
+
+    <insert id="addOrderDishes" parameterType="com.po.OrderDishes">
+        INSERT INTO `orderdishes`(order_id,dishes_id,orderdishes_number)
+        VALUES
+         (#{order_id},#{dishes_id},#{orderdishes_number});
+    </insert>
+
+    <select id="selectOrderDishes" parameterType="java.lang.Integer" resultType="com.po.OrderDishes">
+    select *
+    from `orderdishes`
+    where order_id = #{order_id}
+</select>
+</mapper>

@@ -1,9 +1,11 @@
 package com.controller;
 
+import com.dto.OrderDTO;
 import com.po.Order;
 import com.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,8 +28,8 @@ public class OrderController {
     //添加订单
     @RequestMapping(value = "addOrder",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> addOrder(Order order) throws Exception{
-        Map<String,Object> map = orderService.addOrder(order);
+    public Map<String,Object> addOrder(@RequestBody OrderDTO orderDTO) throws Exception{
+        Map<String,Object> map = orderService.addOrder(orderDTO);
         return map;
     }
 

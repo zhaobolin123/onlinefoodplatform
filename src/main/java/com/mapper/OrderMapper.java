@@ -1,6 +1,8 @@
 package com.mapper;
 
+import com.dto.OrderDTO;
 import com.po.Order;
+import com.po.OrderDishes;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 public interface OrderMapper {
 
     //添加订单
-    void addOrder(Order order);
+    int addOrder(OrderDTO orderDTO);
 
     //根据状态查询订单
     List<Order> selectOrderByState(Order order);
