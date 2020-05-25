@@ -45,9 +45,6 @@ public class OrderServiceImpl implements OrderService {
         else if (StringUtils.isEmpty(orderDTO.getShop_id()) || Objects.equals("", orderDTO.getShop_id())) {
             return ResUtil.error(map,"001","传入参数不能为空!");
         }
-        else if (StringUtils.isEmpty(orderDTO.getOrderDishesList()) || Objects.equals("", orderDTO.getOrderDishesList())) {
-            return ResUtil.error(map,"001","传入参数不能为空!");
-        }
         else{
             try {
                 orderMapper.addOrder(orderDTO);
