@@ -28,7 +28,7 @@ public class OrderController {
     //添加订单
     @RequestMapping(value = "addOrder",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> addOrder(@RequestBody OrderDTO orderDTO) throws Exception{
+    public Map<String,Object> addOrder(OrderDTO orderDTO) throws Exception{
         Map<String,Object> map = orderService.addOrder(orderDTO);
         return map;
     }

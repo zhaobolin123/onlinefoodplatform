@@ -21,6 +21,7 @@ public class OrderDTO {
     private String consignee_phone;
     private String consignee_address;
     private List<OrderDishes> orderDishesList;
+    private String orderDishesListParams;
     private String shopname;
 
     public String getShopname() {
@@ -101,5 +102,13 @@ public class OrderDTO {
 
     public void setOrderDishesList(List<OrderDishes> orderDishesList) {
         this.orderDishesList = orderDishesList;
+    }
+
+    public String getOrderDishesListParams() {
+        return orderDishesListParams;
+    }
+
+    public void setOrderDishesListParams(String orderDishesListParams) {
+        this.orderDishesListParams = orderDishesListParams;
     }
 }

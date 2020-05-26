@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.dto.OrderDTO;
 import com.mapper.*;
 import com.po.*;
@@ -36,8 +38,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Map<String, Object> addOrder(OrderDTO orderDTO) throws Exception {
         Map<String,Object> map = new HashMap<>();
-        Order order = new Order();
-        List<OrderDishes> orderDishesList;
+        List<OrderDishes> orderDishesList = new ArrayList<OrderDishes>();
+        String jsonStr = orderDTO.getOrderDishesListParams();
+        JSONArray res = JSON.parseArray(jsonStr);
+        if(res.size()>0){
+            for(int i=0;i<res.size();i++){
+                OrderDishes orderDishes = new OrderDishes();
+                orderDishes.setDishes_id((Integer) res.getJSONObject(i).get("dishes_id"));
+                orderDishes.setOrderdishes_number((Integer) res.getJSONObject(i).get("orderdishes_number"));
+                orderDishesList.add(orderDishes);
+            }
+        }
 
         if (StringUtils.isEmpty(orderDTO.getUser_id()) || Objects.equals("", orderDTO.getUser_id())) {
             return ResUtil.error(map,"001","传入参数不能为空!");
@@ -49,7 +60,6 @@ public class OrderServiceImpl implements OrderService {
             try {
                 orderMapper.addOrder(orderDTO);
                 int id = orderDTO.getOrder_id();
-                orderDishesList = orderDTO.getOrderDishesList();
                 for (OrderDishes orderDishes : orderDishesList){
                     orderDishes.setOrder_id(id);
                     orderDishesMapper.addOrderDishes(orderDishes);
