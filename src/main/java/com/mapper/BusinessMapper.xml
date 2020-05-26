@@ -12,8 +12,12 @@
     </select>
 
     <select id="businesslogin" parameterType="com.po.Business" resultType="com.po.Business">
-      SELECT business_id,business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time
+      SELECT business_id,business_phone,business_password,contact_number,business_nickname,business_pic,isshop,business_time,state
       from business where  business_phone= #{business_phone} and business_password=#{business_password};
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.po.Business">
+        select * from business where business_id = #{business_id}
     </select>
 
     <update id="updatebusinessinfo" parameterType="com.po.Business">

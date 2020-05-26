@@ -90,6 +90,7 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public Map<String, Object> updatebusinessinfo(Business business) throws Exception {
         Map<String,Object> map = new HashMap<>();
+        Business businessInfo;
 
         if (StringUtils.isEmpty(business.getBusiness_id()) || Objects.equals("",business.getBusiness_id())) {
             return ResUtil.error(map,"001","传入参数不能为空!");
@@ -97,6 +98,8 @@ public class BusinessServiceImpl implements BusinessService {
         else{
             try {
                 businessMapper.updatebusinessinfo(business);
+                businessInfo = businessMapper.selectById(business.getBusiness_id());
+                map.put("businessInfo", businessInfo);
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResUtil.error(map,"005","异常,请联系管理员！");

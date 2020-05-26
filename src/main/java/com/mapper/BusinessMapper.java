@@ -23,4 +23,6 @@ public interface BusinessMapper {
     //修改商家信息
     void updatebusinessinfo(Business business);
 
+    //根据id查询商家信息
+    Business selectById(Integer business_id);
 }
