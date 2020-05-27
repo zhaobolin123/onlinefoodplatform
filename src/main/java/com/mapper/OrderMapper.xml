@@ -12,7 +12,9 @@
       select order_id,user_id,shop_id,state,remark,tableware_number,consignee_phone,consignee_address
       from `order`
       where
-        user_id = #{user_id}
+        <if test="user_id!=null and user_id!=''">
+            user_id = #{user_id}
+        </if>
        <if test="state!=null and state!=''">
         and state = #{state}
        </if>
