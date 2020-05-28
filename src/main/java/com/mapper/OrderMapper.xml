@@ -11,16 +11,17 @@
     <select id="selectOrderByState" parameterType="com.po.Order" resultType="com.po.Order">
       select order_id,user_id,shop_id,state,remark,tableware_number,consignee_phone,consignee_address
       from `order`
-      where
-        <if test="user_id!=null and user_id!=''">
-            user_id = #{user_id}
-        </if>
-       <if test="state!=null and state!=''">
-        and state = #{state}
-       </if>
-       <if test="shop_id!=null and shop_id!=''">
-        and shop_id = #{shop_id}
-       </if>
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="user_id!=null and user_id!=''">
+                user_id = #{user_id}
+            </if>
+           <if test="state!=null and state!=''">
+            and state = #{state}
+           </if>
+           <if test="shop_id!=null and shop_id!=''">
+            and shop_id = #{shop_id}
+           </if>
+        </trim>
     </select>
 
     <update id="updatestate" parameterType="com.po.Order">
