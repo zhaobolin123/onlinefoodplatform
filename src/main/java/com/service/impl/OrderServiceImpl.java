@@ -108,37 +108,31 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orderlist = new ArrayList<Order>();
         List<OrderDTO> list = new ArrayList<OrderDTO>();
         List<OrderDishes> orderDisheslist;
-
-        if (StringUtils.isEmpty(order.getUser_id()) || Objects.equals("", order.getUser_id())) {
-                return ResUtil.error(map,"001","传入参数不能为空!");
-        }
-        else{
-            try {
-                orderlist = orderMapper.selectOrderByState(order);
-                for (Order ordermap : orderlist){
-                    orderDisheslist = orderDishesMapper.selectOrderDishes(ordermap.getOrder_id());
-                    for (OrderDishes orderDishes : orderDisheslist){
-                        String name = dishesMapper.selectDishesById(orderDishes.getDishes_id()).getDishname();
-                        orderDishes.setDishesname(name);
-                    }
-                    OrderDTO orderDTO = new OrderDTO();
-                    orderDTO.setOrder_id(ordermap.getOrder_id());
-                    orderDTO.setUser_id(ordermap.getUser_id());
-                    orderDTO.setShop_id(ordermap.getShop_id());
-                    orderDTO.setState(ordermap.getState());
-                    orderDTO.setRemark(ordermap.getRemark());
-                    orderDTO.setTableware_number(ordermap.getTableware_number());
-                    orderDTO.setConsignee_phone(ordermap.getConsignee_phone());
-                    orderDTO.setConsignee_address(ordermap.getConsignee_address());
-                    orderDTO.setOrderDishesList(orderDisheslist);
-                    orderDTO.setShopname(shopMapper.selectshopbyid(orderDTO.getShop_id()).getShop_name());
-                    list.add(orderDTO);
+        try {
+            orderlist = orderMapper.selectOrderByState(order);
+            for (Order ordermap : orderlist){
+                orderDisheslist = orderDishesMapper.selectOrderDishes(ordermap.getOrder_id());
+                for (OrderDishes orderDishes : orderDisheslist){
+                    String name = dishesMapper.selectDishesById(orderDishes.getDishes_id()).getDishname();
+                    orderDishes.setDishesname(name);
                 }
-                map.put("orderDTO",list);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return ResUtil.error(map,"005","异常,请联系管理员！");
+                OrderDTO orderDTO = new OrderDTO();
+                orderDTO.setOrder_id(ordermap.getOrder_id());
+                orderDTO.setUser_id(ordermap.getUser_id());
+                orderDTO.setShop_id(ordermap.getShop_id());
+                orderDTO.setState(ordermap.getState());
+                orderDTO.setRemark(ordermap.getRemark());
+                orderDTO.setTableware_number(ordermap.getTableware_number());
+                orderDTO.setConsignee_phone(ordermap.getConsignee_phone());
+                orderDTO.setConsignee_address(ordermap.getConsignee_address());
+                orderDTO.setOrderDishesList(orderDisheslist);
+                orderDTO.setShopname(shopMapper.selectshopbyid(orderDTO.getShop_id()).getShop_name());
+                list.add(orderDTO);
             }
+            map.put("orderDTO",list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResUtil.error(map,"005","异常,请联系管理员！");
         }
         return ResUtil.error(map,"000",ResUtil.SUCCESS);
     }
